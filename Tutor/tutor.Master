@@ -1,0 +1,102 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="tutor.master.cs" Inherits="elog.Tutor.tutor" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+</head>
+<body>
+    <form id="form1" runat="server">
+        <nav class="navbar navbar-light bg-light fixed-top">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Tutor DashBoard</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">DashBoard Pages</h5>
+                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">Apporval</a>
+                            </li>
+
+                        </ul>
+
+
+
+                        <asp:Button ID="Button1" runat="server" class="btn btn-outline-success" Text="Logout" OnClick="Button1_Click" />
+
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container mt-5" style="display: none">
+            <div class="mt-4">
+                <h1 class="display-2" style="text-align: center; font-weight: 200;">LogBook Approval Page</h1>
+            </div>
+            <hr />
+
+
+
+            <!-- Q1 -->
+            <div class="row py-3">
+                <div class="col-md-12 mt-2 ">
+                    <label for="state" style="font-size: 25px">
+                        Welcome
+                        <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
+                        of Your LogBookPage 
+                    </label>
+                </div>
+            </div>
+
+
+
+            <!-- Q2 -->
+            <div class="row py-3">
+
+                <div class="col-md-4 mt-2">
+                    <label for="state">
+                        Your Department is
+                            <asp:Label ID="Label2" runat="server" Text=""></asp:Label></label>
+                </div>
+
+                <div class="col-md-6">
+                </div>
+
+                <!-- Q2 -->
+                <div class="row py-3">
+                    <div class="col-md-4 mt-2">
+                        <label for="state">
+                            Name
+                                <asp:Label ID="Label3" runat="server" Text=""></asp:Label></label>
+                    </div>
+
+                    <div class="col-md-6">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+
+
+    </form>
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+</body>
+</html>
