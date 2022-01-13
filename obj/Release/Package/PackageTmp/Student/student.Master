@@ -1,0 +1,96 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="student.master.cs" Inherits="elog.Student.student" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+
+
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <nav class="navbar navbar-light bg-light fixed-top">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="student_front_page.aspx">Student DashBoard</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                        <div class="offcanvas-header">
+                            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">DashBoard Pages</h5>
+                            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+
+
+                                <li class="nav-item">
+                                    <a class="nav-link" runat="server" href="~/Student/Form.aspx">Fill Form</a>
+                                </li>
+                                <br />
+
+                                <li class="nav-item">
+                                    <a class="nav-link" runat="server" href="~/Student/student_report.aspx">Report</a>
+                                    <!-- <asp:LinkButton ID="LinkButton1" runat="server" class="nav-link active" PostBackUrl="~/Admin/AddUser.aspx">Add User</asp:LinkButton> -->
+
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" runat="server" href="~/Student/student_profile.aspx">Profile</a>
+                                </li>
+                                <br />
+
+                                <li class="nav-item">Your Username :
+                                    <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
+                                </li>
+                                <br />
+
+                                <li class="nav-item">Your Name :
+                                    <asp:Label ID="Label2" runat="server" Text=""></asp:Label>
+                                </li>
+
+                                <br />
+
+                                <li class="nav-item">Your Group :
+                                    <asp:Label ID="Label3" runat="server" Text=""></asp:Label>
+                                </li>
+                                <br />
+                                <li class="nav-item">Current Year :
+                                    <asp:Label ID="Label4" runat="server" Text=""></asp:Label>
+                                </li>
+                                <br />
+                                <li class="nav-item">Your Log Year :
+                                    <asp:Label ID="Label5" runat="server" Text=""></asp:Label>
+                                </li>
+                                <br />
+                            </ul>
+
+
+
+                            <asp:Button ID="Button1" runat="server" class="btn btn-outline-success" Text="Logout" OnClick="Button1_Click" />
+
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+
+
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+
+
+    <!-- JavaScript Bundle with Popper -->
+
+    <script src="../bootstrap.min.js"></script>
+    <script src="../Scripts/bootstrap.min.js"></script>
+</body>
+</html>

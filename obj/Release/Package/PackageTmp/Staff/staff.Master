@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../Content/bootstrap.min.css" />
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="form1" runat="server" >
         <nav class="navbar navbar-light bg-light fixed-top">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">Staff DashBoard</a>
@@ -31,7 +31,7 @@
 
                         </ul>
 
-                        <asp:Button ID="Button1" runat="server" class="btn btn-outline-success" Text="Logout"  />
+                        <asp:Button ID="Button1" runat="server" class="btn btn-outline-success" Text="Logout" OnClick="Button1_Click" UseSubmitBehavior="false" />
 
 
                     </div>

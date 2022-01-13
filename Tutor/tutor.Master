@@ -27,7 +27,10 @@
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Apporval</a>
+                                <a class="nav-link active" aria-current="page" href="DocterPage.aspx">Apporval</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="Tutor_profile.aspx">Profile</a>
                             </li>
 
                         </ul>

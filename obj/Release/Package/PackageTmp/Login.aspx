@@ -17,6 +17,9 @@
 
     <div class="container">
         <div class="row ">
+            <div class="col-md-12 text-center">
+                <p class="display-4"> Tutor Login Page</p>
+            </div>
             <div class="col-md-12 ">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Email address</label>
@@ -34,7 +37,7 @@
                     <label for="exampleInputEmail1">Password</label>
               
                     <asp:TextBox ID="TextBox2" runat="server"  class="form-control"
-                        placeholder="Enter Password"  ></asp:TextBox>
+                        placeholder="Enter Password"  TextMode="Password" OnTextChanged="TextBox2_TextChanged" AutoPostBack="True"></asp:TextBox>
 
                 </div>
             </div>
@@ -43,8 +46,9 @@
 
         <div class="form-check">
             <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-            <label class="form-check-label" for="exampleCheck1">
-                Check me out</label>
+            <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
+          <!--  <label class="form-check-label" for="exampleCheck1">
+                Check me out</label> -->
         </div>
         <asp:Button ID="Button1" runat="server" Text="Sign in" class="btn btn-success" UseSubmitBehavior="false" OnClick="Button1_Click"/>
 

@@ -1,9 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/admin.Master" AutoEventWireup="true" CodeBehind="Add_ActivityType_and_Description.aspx.cs" Inherits="elog.Admin.Add_ActivityType_and_Description" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
 
@@ -25,7 +26,7 @@
                         <asp:DropDownList ID="DropDownList1" runat="server" class="custom-select d-block w-100 form-control" DataSourceID="SqlDataSource1" DataTextField="EYear" DataValueField="EYear" AutoPostBack="True">
                         </asp:DropDownList>
 
-                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Elogconnection %>" SelectCommand="SELECT DISTINCT [EYear] FROM [Department]"></asp:SqlDataSource>
+                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Elogconnection %>" SelectCommand="SELECT DISTINCT [EYear] FROM [EYear]"></asp:SqlDataSource>
 
                     </div>
                 </div>
@@ -41,9 +42,9 @@
 
                         <asp:DropDownList ID="DropDownList2" runat="server" class="custom-select d-block w-100 form-control" DataSourceID="SqlDataSource2" DataTextField="Log_Year" DataValueField="Log_Year" AutoPostBack="True">
                         </asp:DropDownList>
-                        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:Elogconnection %>" SelectCommand="SELECT DISTINCT [Log_Year] FROM [Department] WHERE ([EYear] = @EYear)">
+                        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:Elogconnection %>" SelectCommand="SELECT DISTINCT [Log_Year] FROM [ELogYear] WHERE ([EYear] = @EYear)">
                             <SelectParameters>
-                                <asp:ControlParameter ControlID="DropDownList1" Name="EYear" PropertyName="SelectedValue" Type="Int32" />
+                                <asp:ControlParameter ControlID="DropDownList1" Name="EYear" PropertyName="SelectedValue" Type="String" />
                             </SelectParameters>
                         </asp:SqlDataSource>
                     </div>
@@ -61,7 +62,7 @@
                         </asp:DropDownList>
                         <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:Elogconnection %>" SelectCommand="SELECT DISTINCT [Department] FROM [Department] WHERE (([EYear] = @EYear) AND ([Log_Year] = @Log_Year))">
                             <SelectParameters>
-                                <asp:ControlParameter ControlID="DropDownList1" Name="EYear" PropertyName="SelectedValue" Type="Int32" />
+                                <asp:ControlParameter ControlID="DropDownList1" Name="EYear" PropertyName="SelectedValue" Type="String" />
                                 <asp:ControlParameter ControlID="DropDownList2" Name="Log_Year" PropertyName="SelectedValue" Type="String" />
                             </SelectParameters>
                         </asp:SqlDataSource>
@@ -77,12 +78,28 @@
                     <div class="col-md-6">
 
                         <asp:DropDownList ID="DropDownList4" runat="server" class="custom-select d-block w-100 form-control">
-                            <asp:ListItem>Choose...</asp:ListItem>
-                            <asp:ListItem>Patient Prob. Presentation</asp:ListItem>
+
+                            <asp:ListItem>Bedside Teaching</asp:ListItem>
                             <asp:ListItem>Case Writeups</asp:ListItem>
-                            <asp:ListItem>Hospital Out Patient Dpt.</asp:ListItem>
+                            <asp:ListItem>Hospital Out Patient </asp:ListItem>
                             <asp:ListItem>Medical Skills &amp; Simulation Center</asp:ListItem>
                             <asp:ListItem>Skills &amp; Procedure</asp:ListItem>
+                            <asp:ListItem>Core Cases</asp:ListItem>
+                            <asp:ListItem>Case History taking and examination (Diagnosis) : </asp:ListItem>
+                            <asp:ListItem>Case presentation (diagnosis): </asp:ListItem>
+                            <asp:ListItem>On-Call: </asp:ListItem>
+                            <asp:ListItem>Bedside Teaching-Core Cases </asp:ListItem>
+                            <asp:ListItem>Bedside Teaching-Optional Cases </asp:ListItem>
+                            <asp:ListItem>Case/Problem </asp:ListItem>
+                            <asp:ListItem>Accident & Emergency</asp:ListItem>
+                            <asp:ListItem>Interactive Session</asp:ListItem>
+                            <asp:ListItem>Online Session </asp:ListItem>
+                            <asp:ListItem>AGU Session </asp:ListItem>
+                            <asp:ListItem>Core clinical conditions and presentations</asp:ListItem>
+
+
+
+
                         </asp:DropDownList>
 
 
@@ -127,7 +144,7 @@
                     <div class="col-md-12">
                         <!-- GridView -->
                         <asp:Panel ID="Panel1" runat="server" ScrollBars="Horizontal">
- 
+
 
                             <asp:GridView ID="GridView2" runat="server" CssClass="table table-bordered table-hover table-responsive" AllowPaging="True" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="Id" DataSourceID="SqlDataSource4" ForeColor="#333333" GridLines="None">
 
@@ -144,6 +161,7 @@
                                 <EditRowStyle BackColor="#999999" />
                                 <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
                                 <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                                <PagerSettings Mode="NumericFirstLast" />
                                 <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
                                 <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
                                 <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
@@ -154,7 +172,7 @@
 
                             </asp:GridView>
 
-                         
+
                             <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:Elogconnection %>" DeleteCommand="DELETE FROM [Department_Activity] WHERE [Id] = @Id" InsertCommand="INSERT INTO [Department_Activity] ([Eyear], [LogYear], [Department], [Activity_type], [Core_diagnosis_prod_session]) VALUES (@Eyear, @LogYear, @Department, @Activity_type, @Core_diagnosis_prod_session)" SelectCommand="SELECT * FROM [Department_Activity]" UpdateCommand="UPDATE [Department_Activity] SET [Eyear] = @Eyear, [LogYear] = @LogYear, [Department] = @Department, [Activity_type] = @Activity_type, [Core_diagnosis_prod_session] = @Core_diagnosis_prod_session WHERE [Id] = @Id">
                                 <DeleteParameters>
                                     <asp:Parameter Name="Id" Type="Int32" />

@@ -31,17 +31,36 @@ namespace elog.Admin
             showGrid();
         }
 
+
         private void SaveData()
         {
             con.Open();
-            String query = "insert into ELogGroupStudent values ('" + DropDownList1.Text + "','" + DropDownList2.Text + "','" + DropDownList3.Text + "','" + TextBox1.Text + "')";         //Qyery name   
-            SqlCommand com = new SqlCommand(query, con);  //creating  SqlCommand  object            
-            com.ExecuteNonQuery();                     //executing the sqlcommand  
-            con.Close();
-            Label1.Visible = true;
-            Label1.Text = "Records are Submitted Successfully";
+            if (TextBox1.Text == "")
+            {
+                Response.Write("<script>alert('Please Fill the Student Name')</script>");
+            }
+
+            else if (TextBox2.Text == "")
+            {
+                Response.Write("<script>alert('Please Fill the Student Username')</script>");
+            }
+            else if (TextBox3.Text == "")
+            {
+                Response.Write("<script>alert('Please Fill the Student Passwords')</script>");
+            }
+            else
+            {
+                String query = "insert into ELogGroupStudent values ('" + DropDownList1.Text + "','" + DropDownList2.Text + "','" + DropDownList3.Text + "','" + TextBox1.Text + "', '" + TextBox2.Text + "', '" + TextBox3.Text + "' )";         //Qyery name   
+                SqlCommand cmd = new SqlCommand(query, con);  //creating  SqlCommand  object            
+                cmd.ExecuteNonQuery();                        //executing the sqlcommand  
+                con.Close();
+                Label1.Visible = true;
+                Label1.Text = "Records are Submitted Successfully";
+            }
 
         }
+
+
 
         private void showGrid()
         {
@@ -49,10 +68,13 @@ namespace elog.Admin
             SqlDataAdapter sda = new SqlDataAdapter("Select * From ELogGroupStudent", con);
             DataSet ds = new DataSet();
             sda.Fill(ds);
-            object DataSource4 = null;
-            GridView1.DataSource = DataSource4;
+            object DataSource5 = null;
+            GridView1.DataSource = DataSource5;
             GridView1.DataBind();
             con.Close();
+
         }
+
+
     }
 }

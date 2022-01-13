@@ -22,35 +22,51 @@ namespace elog
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            //ExportGridToPDF();
+            ExportGridToPDF();
         }
-            
+
 
 
 
         //export in pdf Logic
-          private void ExportGridToPDF()
+        private void ExportGridToPDF()
+        {
+            GridView1.AllowPaging = true;
+            GridView1.DataBind();
+            GridView1.HeaderRow.Cells[9].Visible = true;
+            GridView1.FooterRow.Cells[9].Visible = true;
+            // Loop through the rows and hide the cell in the first column
+            for (int i = 0; i < GridView1.Rows.Count; i++)
             {
-
-            Response.ContentType = "application/pdf";
-            Response.AddHeader("content-disposition", "attachment;filename=ElogReport.pdf");
-            Response.Cache.SetCacheability(HttpCacheability.NoCache);
+                GridViewRow row = GridView1.Rows[i];
+                row.Cells[9].Visible = false;
+            }
             StringWriter sw = new StringWriter();
             HtmlTextWriter hw = new HtmlTextWriter(sw);
-            GridView1.AllowPaging = false;
-            GridView1.DataBind();
+            hw.AddStyleAttribute(HtmlTextWriterStyle.Direction, "rtl");
             GridView1.RenderControl(hw);
-            StringReader sr = new StringReader(sw.ToString());
-            Document pdfDoc = new Document(PageSize.A4, 10f, 10f, 10f, 0f);
-            HTMLWorker htmlparser = new HTMLWorker(pdfDoc);
-            PdfWriter.GetInstance(pdfDoc, Response.OutputStream);
-            pdfDoc.Open();
-            htmlparser.Parse(sr);//this is the error line
-            pdfDoc.Close();
-            Response.Write(pdfDoc);
-            Response.End();
+            string gridHTML = sw.ToString().Replace("\"", "'")
+                .Replace(System.Environment.NewLine, "");
+            StringBuilder sb = new StringBuilder();
+            sb.Append("<script type='ext/javascript'>");
+            sb.Append("window.onload = new function(){");
+            sb.Append("var printWin = window.open('', '', 'left=0");
+            sb.Append(",top=0,width=1000,height=600,status=0');");
+            sb.Append("printWin.document.write(\"");
+            sb.Append(gridHTML);
+            sb.Append("\");");
+            sb.Append("printWin.document.close();");
+            sb.Append("printWin.focus();");
+            sb.Append("printWin.print();");
+            sb.Append("printWin.close();};");
+            sb.Append("</script>");
+            ClientScript.RegisterStartupScript(this.GetType(), "GridPrint", sb.ToString());
+            GridView1.AllowPaging = true;
+            GridView1.DataBind();
+
+
         }
-        
+
         public override void VerifyRenderingInServerForm(Control control)
         {
             //required to avoid the runtime error "  

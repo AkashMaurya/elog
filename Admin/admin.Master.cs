@@ -17,7 +17,25 @@ namespace elog.Admin
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["Elogconnection"].ConnectionString);
         protected void Page_Load(object sender, EventArgs e)
         {
-           
+
+            HttpContext.Current.Response.Cache.SetExpires(DateTime.UtcNow.AddDays(-1));
+            HttpContext.Current.Response.Cache.SetValidUntilExpires(false);
+            HttpContext.Current.Response.Cache.SetRevalidation(HttpCacheRevalidation.AllCaches);
+            HttpContext.Current.Response.Cache.SetCacheability(HttpCacheability.NoCache);
+            HttpContext.Current.Response.Cache.SetNoStore();
+            if (!Page.IsPostBack)
+            {
+                if (Session["username"] == null)
+                {
+                    Session.Abandon();
+                    Session.Clear();
+                    Session.RemoveAll();
+                    Response.Redirect("~/admin_login.aspx");
+
+                }
+               
+                con.Close();
+            }
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -26,7 +44,7 @@ namespace elog.Admin
             Session.Abandon();
             FormsAuthentication.SignOut();
             Session["username"] = null;
-            Response.Redirect("~/Login.aspx");
+            Response.Redirect("~/admin_login.aspx");
         }
     }
 }

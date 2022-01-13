@@ -19,7 +19,7 @@ namespace elog.Admin
         {
             if (!IsPostBack)
             {
-                Session["username"].ToString();
+               // Session["username"].ToString();
                 con.Close();
                 GridView1.Visible = true;
                 showGrid();

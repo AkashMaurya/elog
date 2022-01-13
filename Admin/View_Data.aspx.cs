@@ -59,7 +59,7 @@ namespace elog.Admin
 
         private void BindGrid()
         {
-            string query = " select * from Final_Record where freetext (*,'%" + TextBox1.Text + "%')";
+            string query = "select * from Final_Record where freetext (*,'%" + TextBox1.Text + "%')";
             using (SqlCommand cmd = new SqlCommand(query, con))
             {
 

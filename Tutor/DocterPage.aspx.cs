@@ -52,7 +52,6 @@ namespace elog.Tutor
 
         private void BindGrid()
         {
-
             con.Open();
             using (SqlCommand cmd = new SqlCommand("SELECT * FROM Final_Record where Department = '" + Label3.Text + "'  And  Doctor_Name ='" + Label2.Text + "' And Current_Status = 'Approval Required '"))
             {

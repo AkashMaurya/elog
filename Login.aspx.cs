@@ -21,24 +21,31 @@ namespace elog
                 TextBox1.Text = "";
                 TextBox2.Text = "";
                 con.Close();
-                
+                Label1.Text = "";
+
             }
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+
+        public void TutorLogin()
         {
             //login
-            if (TextBox1.Text == "admin" && TextBox2.Text == "admin123")
-            {
-                
-                
-                Response.Write("<script>alert('Successfully Login As an Admin User')</script>");
-                Response.Redirect("~/Admin/AddUser.aspx");
-                Session["username"] = TextBox1.Text; 
 
-                /*
+            if (TextBox1.Text == "")
+            {
+                Response.Write("<script>alert('please type the Username')</script>");
+            }
+
+            else if (TextBox2.Text == "")
+            {
+                Response.Write("<script>alert('please type the password')</script>");
+            }
+
+            else
+            {
+
                 SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["Elogconnection"].ConnectionString);
-                string str = " select * from login_user ";
+                string str = " select * from Doctor ";
                 con.Open();
                 SqlCommand cmd = new SqlCommand(str, con);
                 SqlDataReader dr = cmd.ExecuteReader();
@@ -46,13 +53,13 @@ namespace elog
                 {
                     if (TextBox1.Text == dr["Username"].ToString() && TextBox2.Text == dr["Password"].ToString())
                     {
-                        Response.Write("<script>alert('Successfully Login As an Admin User')</script>");
-                        Response.Redirect("~/Admin/AddUser.aspx");
-                        Session["username"] = TextBox1.Text;
+                        Session["Username"] = TextBox1.Text;
+                        Response.Redirect("~/Tutor/DocterPage.aspx");
                     }
                     else
                     {
-                        //Label1.Text = "Something Wrong in Username or Password try Again";
+                        Label1.Text = "Something Wrong in Username or Password try Again";
+
                     }
 
                 }
@@ -61,55 +68,25 @@ namespace elog
 
                 con.Close();
                 TextBox1.Text = "";
-                TextBox2.Text = ""; */
+                TextBox2.Text = "";
+
+
 
             }
-            else if (TextBox1.Text == "staff" && TextBox2.Text == "staff321")
-            {
-                Response.Write("<script>alert('Successfully Login As an Admin User')</script>");
-                Response.Redirect("~/Staff/Staff_ViewData.aspx");
-                Session["username"] = TextBox1.Text;
-            }
-
-            else
-            {
-                try
-                {
-                    
-                    SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["Elogconnection"].ConnectionString);
-                    string str = " select * from Doctor ";
-                    con.Open();
-                    SqlCommand cmd = new SqlCommand(str, con);
-                    SqlDataReader dr = cmd.ExecuteReader();
-                    while (dr.Read())
-                    {
-                        if (TextBox1.Text == dr["Username"].ToString() && TextBox2.Text == dr["Password"].ToString())
-                        {
-                            Session["Username"] = TextBox1.Text;
-                            Response.Redirect("~/Tutor/DocterPage.aspx");
-                        }
-                        else
-                        {
-                            //Label1.Text = "Something Wrong in Username or Password try Again";
-                        }
-
-                    }
-
-                    dr.Close();
-
-                    con.Close();
-                    TextBox1.Text = "";
-                    TextBox2.Text = "";
-
-                }
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
-            }
-
         }
 
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+
+            TutorLogin();
+        }
+
+        protected void TextBox2_TextChanged(object sender, EventArgs e)
+        {
+            TutorLogin();
+        }
+        
+       
     }
-    
+
 }

@@ -85,7 +85,7 @@
                                         <asp:BoundField DataField="EGroup" HeaderText="Group" />
                                         <asp:BoundField DataField="ELogGroupStudent" HeaderText="Group Student" />
                                         <asp:BoundField DataField="Doctor_Name" HeaderText="Doctor Name" />
-                                        <asp:BoundField DataField="Hospital_Name" HeaderText="Hospital Name" />
+                                        <asp:BoundField DataField="Training_Site" HeaderText="Training Site" />
                                         <asp:BoundField DataField="PatientID" HeaderText="Patient ID" />
                                         <asp:BoundField DataField="Activity_Type" HeaderText="Type" />
                                         <asp:BoundField DataField="Core_Diag_Sess" HeaderText="Description" />

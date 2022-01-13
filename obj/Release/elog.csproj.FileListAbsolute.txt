@@ -1,3 +1,4 @@
+C:\Users\akashm\source\repos\Elog\elog\obj\Release\elog.csproj.CoreCompileInputs.cache
 C:\Users\akashm\source\repos\Elog\elog\bin\elog.dll.config
 C:\Users\akashm\source\repos\Elog\elog\bin\elog.dll
 C:\Users\akashm\source\repos\Elog\elog\bin\elog.pdb
@@ -56,7 +57,6 @@ C:\Users\akashm\source\repos\Elog\elog\bin\itextsharp.dll
 C:\Users\akashm\source\repos\Elog\elog\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\akashm\source\repos\Elog\elog\bin\itextsharp.xml
 C:\Users\akashm\source\repos\Elog\elog\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\akashm\source\repos\Elog\elog\obj\Release\elog.csproj.AssemblyReference.cache
-C:\Users\akashm\source\repos\Elog\elog\obj\Release\elog.csproj.CoreCompileInputs.cache
 C:\Users\akashm\source\repos\Elog\elog\obj\Release\elog.dll
 C:\Users\akashm\source\repos\Elog\elog\obj\Release\elog.pdb
+C:\Users\akashm\source\repos\Elog\elog\obj\Release\elog.csproj.AssemblyReference.cache

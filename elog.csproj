@@ -83,7 +83,9 @@
     <Content Include="Admin\Add_Elog_Year.aspx" />
     <Content Include="Admin\Add_Group.aspx" />
     <Content Include="Admin\Add_Student_into_Groups.aspx" />
+    <Content Include="Admin\Add_Year.aspx" />
     <Content Include="Admin\View_Data.aspx" />
+    <Content Include="admin_login.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -104,14 +106,22 @@
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="General_Introduction.aspx" />
+    <Content Include="Home.aspx" />
     <Content Include="image\3.png" />
     <Content Include="image\4.png" />
+    <Content Include="image\Admin.png" />
     <Content Include="image\agu.png" />
     <Content Include="image\Agu_wall.jpg" />
     <Content Include="image\calendar.png" />
     <Content Include="image\form.jpg" />
+    <Content Include="image\staff.png" />
+    <Content Include="image\stu.png" />
+    <Content Include="image\tutor.png" />
     <Content Include="index.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="OBG_and_GYNE.aspx" />
+    <Content Include="Pediatrics.aspx" />
+    <Content Include="privacy_policy.aspx" />
     <Content Include="Report.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -124,8 +134,15 @@
     <Content Include="Scripts\jspdf.plugin.autotable.min.js" />
     <Content Include="Scripts\tableHTMLExport.js" />
     <Content Include="Staff\Staff_ViewData.aspx" />
+    <Content Include="staff_login.aspx" />
+    <Content Include="Student\Form.aspx" />
+    <Content Include="Student\student_front_page.aspx" />
+    <Content Include="Student\student_profile.aspx" />
+    <Content Include="Student\student_report.aspx" />
+    <Content Include="student_login.aspx" />
     <Content Include="submit_form.aspx" />
     <Content Include="Tutor\DocterPage.aspx" />
+    <Content Include="Tutor\Tutor_profile.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -178,6 +195,13 @@
     <Compile Include="Admin\Add_Student_into_Groups.aspx.designer.cs">
       <DependentUpon>Add_Student_into_Groups.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Add_Year.aspx.cs">
+      <DependentUpon>Add_Year.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Add_Year.aspx.designer.cs">
+      <DependentUpon>Add_Year.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\admin.Master.cs">
       <DependentUpon>admin.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -192,12 +216,26 @@
     <Compile Include="Admin\View_Data.aspx.designer.cs">
       <DependentUpon>View_Data.aspx</DependentUpon>
     </Compile>
+    <Compile Include="admin_login.aspx.cs">
+      <DependentUpon>admin_login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin_login.aspx.designer.cs">
+      <DependentUpon>admin_login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="General_Introduction.aspx.cs">
       <DependentUpon>General_Introduction.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="General_Introduction.aspx.designer.cs">
       <DependentUpon>General_Introduction.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
     <Compile Include="Home.Master.cs">
       <DependentUpon>Home.Master</DependentUpon>
@@ -219,6 +257,27 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="OBG_and_GYNE.aspx.cs">
+      <DependentUpon>OBG_and_GYNE.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OBG_and_GYNE.aspx.designer.cs">
+      <DependentUpon>OBG_and_GYNE.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pediatrics.aspx.cs">
+      <DependentUpon>Pediatrics.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pediatrics.aspx.designer.cs">
+      <DependentUpon>Pediatrics.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="privacy_policy.aspx.cs">
+      <DependentUpon>privacy_policy.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="privacy_policy.aspx.designer.cs">
+      <DependentUpon>privacy_policy.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Report.aspx.cs">
@@ -242,6 +301,55 @@
     <Compile Include="Staff\Staff_ViewData.aspx.designer.cs">
       <DependentUpon>Staff_ViewData.aspx</DependentUpon>
     </Compile>
+    <Compile Include="staff_login.aspx.cs">
+      <DependentUpon>staff_login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="staff_login.aspx.designer.cs">
+      <DependentUpon>staff_login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Student\Form.aspx.cs">
+      <DependentUpon>Form.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Student\Form.aspx.designer.cs">
+      <DependentUpon>Form.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Student\student.Master.cs">
+      <DependentUpon>student.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Student\student.Master.designer.cs">
+      <DependentUpon>student.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Student\student_front_page.aspx.cs">
+      <DependentUpon>student_front_page.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Student\student_front_page.aspx.designer.cs">
+      <DependentUpon>student_front_page.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Student\student_profile.aspx.cs">
+      <DependentUpon>student_profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Student\student_profile.aspx.designer.cs">
+      <DependentUpon>student_profile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Student\student_report.aspx.cs">
+      <DependentUpon>student_report.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Student\student_report.aspx.designer.cs">
+      <DependentUpon>student_report.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="student_login.aspx.cs">
+      <DependentUpon>student_login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="student_login.aspx.designer.cs">
+      <DependentUpon>student_login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="submit_form.aspx.cs">
       <DependentUpon>submit_form.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -262,6 +370,13 @@
     </Compile>
     <Compile Include="Tutor\tutor.Master.designer.cs">
       <DependentUpon>tutor.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Tutor\Tutor_profile.aspx.cs">
+      <DependentUpon>Tutor_profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tutor\Tutor_profile.aspx.designer.cs">
+      <DependentUpon>Tutor_profile.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -298,6 +413,7 @@
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Staff\staff.Master" />
     <Content Include="Tutor\tutor.Master" />
+    <Content Include="Student\student.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

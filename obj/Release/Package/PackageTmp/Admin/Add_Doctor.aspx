@@ -64,10 +64,10 @@
                         <asp:DropDownList ID="DropDownList3" runat="server" class="custom-select d-block w-100 form-control" AutoPostBack="True" DataSourceID="SqlDataSource3" DataTextField="Department" DataValueField="Department">
                         </asp:DropDownList>
 
-                        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:Elogconnection %>" SelectCommand="SELECT DISTINCT [Department] FROM [Department_Activity] WHERE (([EYear] = @EYear) AND ([LogYear] = @LogYear))">
+                        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:Elogconnection %>" SelectCommand="SELECT DISTINCT [Department] FROM [Department] WHERE (([EYear] = @EYear) AND ([Log_Year] = @Log_Year))">
                             <SelectParameters>
                                 <asp:ControlParameter ControlID="DropDownList1" Name="EYear" PropertyName="SelectedValue" Type="String" />
-                                <asp:ControlParameter ControlID="DropDownList2" Name="LogYear" PropertyName="SelectedValue" Type="String" />
+                                <asp:ControlParameter ControlID="DropDownList2" Name="Log_Year" PropertyName="SelectedValue" Type="String" />
                             </SelectParameters>
                         </asp:SqlDataSource>
 
@@ -130,6 +130,7 @@
 
                         <asp:Button ID="Button1" runat="server" Text="Submit" class="btn btn-warning " Style="width: 15rem;" UseSubmitBehavior="false" OnClick="Button1_Click" />
                         <br />
+                        <br />
                     </div>
                 </div>
 
@@ -152,6 +153,7 @@
                             <EditRowStyle BackColor="#999999" />
                             <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
                             <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                            <PagerSettings Mode="NumericFirstLast" />
                             <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
                             <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
                             <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />

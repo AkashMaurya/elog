@@ -674,7 +674,7 @@
         </div>
         <div class="text-center">
             
-        <asp:Button ID="Button1" runat="server" class="btn btn-primary" Text="Print Page" UseSubmitBehavior="false" />
+        <asp:Button ID="Button1" runat="server" class="btn btn-primary" Text="Print Page" UseSubmitBehavior="false" OnClientClick="window.print();"/>
         </div>
         <br/>
         <br />
