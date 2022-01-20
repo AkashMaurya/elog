@@ -17,7 +17,7 @@ namespace elog.Tutor
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["Elogconnection"].ConnectionString);
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //for showing Tutor Profile Data
             if (IsPostBack)
             {
                 Label4.Text = Session["username"].ToString();
@@ -49,7 +49,7 @@ namespace elog.Tutor
 
 
 
-
+        // a function for show not approved data in gridview
         private void BindGrid()
         {
             con.Open();
@@ -72,17 +72,18 @@ namespace elog.Tutor
         }
 
 
-
+        //A function for Save Records from gridview 
         protected void Button2_Click(object sender, EventArgs e)
         {
 
             // Approve
-            //Save Records
+
             if (GridView1.Visible == true)
             {
                 // Save Records
                 foreach (GridViewRow row in GridView1.Rows)
                 {
+                    //fetching 
                     int Id = Convert.ToInt32(row.Cells[0].Text);
                     RadioButton status = row.Cells[13].FindControl("RadioButton1") as RadioButton;
                     RadioButton status1 = row.Cells[13].FindControl("RadioButton2") as RadioButton;
@@ -90,29 +91,29 @@ namespace elog.Tutor
 
                     if (status.Checked)
                     {
-                        updaterow(Id, "Approved");
+                        updaterow(Id, "Approved",textBox1.Text);
                     }
 
                     else if (status1.Checked)
                     {
-                        updaterow(Id, "Rejected");
+                        updaterow(Id, "Rejected" ,textBox1.Text);
                     }
+                    /*
                     else if (textBox1.Text != "")
                     {
                         updateRemarks(Id, textBox1.Text);
-                    }
+                    } */
                     else
                     {
-                        updaterow(Id, "Approval Required");
+                        updaterow(Id, "Approval Required", textBox1.Text);
 
                     }
-
 
                 }
             }
             else
             {
-                viewEnd1();
+                //viewEnd1();
                 Label1.Text = "Applications Has Been Approved Successfully";
                 SqlDataSource3.DataBind();
                 GridView1.DataSource = SqlDataSource3;
@@ -120,15 +121,15 @@ namespace elog.Tutor
             }
 
             BindGrid();
-            Label1.Text = "Data is Updated already";
+            Label1.Text = "Data is Updated ";
 
         }
 
-        private void updaterow(int Id, String Current_Status)
+        private void updaterow(int Id, String Current_Status, String Remarks)
         {
 
             con.Open();
-            String updatedata = "Update Final_Record set Current_Status ='" + Current_Status + "' where Id=" + Id;
+            String updatedata = "Update Final_Record set Current_Status ='" + Current_Status + "' , Remarks = '" + Remarks + "' where Id=" + Id;
             SqlCommand cmd = new SqlCommand();
             cmd.CommandText = updatedata;
             cmd.Connection = con;

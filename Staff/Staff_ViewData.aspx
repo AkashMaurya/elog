@@ -17,14 +17,19 @@
 
         </div>
         <div class="row mt-2">
-            <div class="col-md-10 text-center">
+            <div class="col-md-9 text-center">
 
                 <asp:TextBox ID="TextBox2" runat="server" CssClass="form-control" placeholder="Type Here" OnTextChanged="TextBox2_TextChanged"></asp:TextBox>
             </div>
 
-            <div class="col-md-2 ">
+            <div class="col-md-3 ">
 
                 <asp:Button ID="Button1" runat="server" Text="Search" class="btn btn-primary" UseSubmitBehavior="false" OnClick="Button1_Click" />
+                &nbsp; &nbsp;
+                <asp:Button ID="ExportInExcel" runat="server" Text="Export Excel" CssClass="btn btn-warning" UseSubmitBehavior="false" OnClick="exportexcel" />
+                &nbsp; &nbsp;
+                        <asp:Button ID="Button2" runat="server" Text="Download Data" class="btn btn-primary " UseSubmitBehavior="false" OnClick="Button2_Click" />
+
             </div>
         </div>
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
@@ -88,7 +93,6 @@
 
             </ContentTemplate>
         </asp:UpdatePanel>
-        <asp:Button ID="Button2" runat="server" Text="Download Data" class="btn btn-primary " UseSubmitBehavior="false" OnClick="Button2_Click" />
 
     </div>
 

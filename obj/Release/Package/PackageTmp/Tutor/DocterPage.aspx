@@ -100,7 +100,7 @@
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Remarks">
                                             <ItemTemplate>
-                                                <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                                                <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control" placeholder="Give Representation"></asp:TextBox>
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                     </Columns>
@@ -135,7 +135,7 @@
                             <br />
                         </div>
                     </div>
-
+                     
                     <!-- Q4 -->
                     <div class="row py-3">
                         <div class="col-md-4 mt-2">

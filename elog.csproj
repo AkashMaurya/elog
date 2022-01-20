@@ -142,6 +142,7 @@
     <Content Include="student_login.aspx" />
     <Content Include="submit_form.aspx" />
     <Content Include="Tutor\DocterPage.aspx" />
+    <Content Include="Tutor\report_check.aspx" />
     <Content Include="Tutor\Tutor_profile.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -363,6 +364,13 @@
     </Compile>
     <Compile Include="Tutor\DocterPage.aspx.designer.cs">
       <DependentUpon>DocterPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tutor\report_check.aspx.cs">
+      <DependentUpon>report_check.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tutor\report_check.aspx.designer.cs">
+      <DependentUpon>report_check.aspx</DependentUpon>
     </Compile>
     <Compile Include="Tutor\tutor.Master.cs">
       <DependentUpon>tutor.Master</DependentUpon>
