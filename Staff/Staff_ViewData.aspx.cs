@@ -39,17 +39,15 @@ namespace elog.Staff
             }
         }
 
-        private void text_Search()
+       
+
+        private void DropdownListDataFilter()
         {
-            if (TextBox2.Text == "")
+            string connection = (ConfigurationManager.ConnectionStrings["Elogconnection"].ConnectionString);
+            using (SqlConnection con = new SqlConnection(connection))
             {
-                ShowData();
-            }
-            else
-            {
-                //  string query = "SELECT [EYear],[Log_Year],[Department] ,[EGroup],[ELogGroupStudent],[Doctor_Name] ,[Training_Site],[PatientID],[Participation_Type] ,[Activity_Type],[Core_Diag_Sess],[Type_Desc],[EDate] ,[Current_Status] ,[Remarks] FROM [ELogBook].[dbo].[Final_Record] where freetext ([EYear],'%" + TextBox2.Text + "%') OR freetext ([Log_Year],'%" + TextBox2.Text + "%') OR freetext ([Department],'%" + TextBox2.Text + "%') OR freetext ([EGroup],'%" + TextBox2.Text + "%') OR freetext ([ELogGroupStudent],'%" + TextBox2.Text + "%') OR freetext ([Doctor_Name],'%" + TextBox2.Text + "%') OR freetext ([Training_Site],'%" + TextBox2.Text + "%') OR freetext ([Participation_Type],'%" + TextBox2.Text + "%') OR freetext ([Activity_Type],'%" + TextBox2.Text + "%') OR freetext ([Core_Diag_Sess],'%" + TextBox2.Text + "%') OR freetext ([Type_Desc],'%" + TextBox2.Text + "%') OR freetext ([EDate],'%" + TextBox2.Text + "%') OR freetext ([Current_Status],'%" + TextBox2.Text + "%') OR freetext ([Remarks],'%" + TextBox2.Text + "%') ";
-                string query = "SELECT Distinct [Id], [EYear], [Log_Year], [Department], [EGroup], [ELogGroupStudent], [Doctor_Name], [Training_Site] , [PatientID] ,[Activity_Type], [Core_Diag_Sess], [Type_Desc] , [Participation_Type], [EDate] , [Current_Status], [Remarks] FROM [ELogBook].[dbo].[Final_Record] where freetext ([EYear],'%" + TextBox2.Text + "%') OR freetext ([Log_Year],'%" + TextBox2.Text + "%') OR freetext ([Department],'%" + TextBox2.Text + "%') OR freetext ([EGroup],'%" + TextBox2.Text + "%') OR freetext ([ELogGroupStudent],'%" + TextBox2.Text + "%') OR freetext ([Doctor_Name],'%" + TextBox2.Text + "%') OR freetext ([Training_Site],'%" + TextBox2.Text + "%') OR freetext ([Participation_Type],'%" + TextBox2.Text + "%') OR freetext ([Activity_Type],'%" + TextBox2.Text + "%') OR freetext ([Core_Diag_Sess],'%" + TextBox2.Text + "%') OR freetext ([Type_Desc],'%" + TextBox2.Text + "%') OR freetext ([EDate],'%" + TextBox2.Text + "%') OR freetext ([Current_Status],'%" + TextBox2.Text + "%') OR freetext ([Remarks],'%" + TextBox2.Text + "%')";
-                using (SqlCommand cmd = new SqlCommand(query, con))
+
+                using (SqlCommand cmd = new SqlCommand("SELECT [EYear],[Log_Year],[Department],[EGroup],[ELogGroupStudent],[Doctor_Name],[Training_Site],[PatientID],[Participation_Type],[Activity_Type],[Core_Diag_Sess],[Type_Desc],[EDate],[Current_Status],[Remarks] FROM [ELogBook].[dbo].[Final_Record] where [Department] ='" + DropDownList1.Text.ToString()+ "'"))
                 {
                     using (SqlDataAdapter sda = new SqlDataAdapter())
                     {
@@ -57,17 +55,16 @@ namespace elog.Staff
                         sda.SelectCommand = cmd;
                         using (DataTable dt = new DataTable())
                         {
-                            sda.Fill(dt);
+                            sda.Fill(dt); 
                             GridView1.DataSource = dt;
-                            GridView1.Visible = true;
                             GridView1.DataBind();
 
                         }
                     }
                 }
+
             }
         }
-
 
 
         private void ShowData()
@@ -110,6 +107,11 @@ namespace elog.Staff
                 this.text_Search();
 
             }
+            else if(DropDownList1.Text.ToString()== "Internal Medicine")
+            {
+                GridView1.PageIndex = e.NewPageIndex;
+                this.DropdownListDataFilter();
+            }
             else
             {
                 GridView1.PageIndex = e.NewPageIndex;
@@ -118,13 +120,53 @@ namespace elog.Staff
         }
 
 
+        //text search function
+        private void text_Search()
+        {
+            if (TextBox2.Text == "")
+            {
+                ShowData();
+            }
+            else
+            {
+                //  string query = "SELECT [EYear],[Log_Year],[Department] ,[EGroup],[ELogGroupStudent],[Doctor_Name] ,[Training_Site],[PatientID],[Participation_Type] ,[Activity_Type],[Core_Diag_Sess],[Type_Desc],[EDate] ,[Current_Status] ,[Remarks] FROM [ELogBook].[dbo].[Final_Record] where freetext ([EYear],'%" + TextBox2.Text + "%') OR freetext ([Log_Year],'%" + TextBox2.Text + "%') OR freetext ([Department],'%" + TextBox2.Text + "%') OR freetext ([EGroup],'%" + TextBox2.Text + "%') OR freetext ([ELogGroupStudent],'%" + TextBox2.Text + "%') OR freetext ([Doctor_Name],'%" + TextBox2.Text + "%') OR freetext ([Training_Site],'%" + TextBox2.Text + "%') OR freetext ([Participation_Type],'%" + TextBox2.Text + "%') OR freetext ([Activity_Type],'%" + TextBox2.Text + "%') OR freetext ([Core_Diag_Sess],'%" + TextBox2.Text + "%') OR freetext ([Type_Desc],'%" + TextBox2.Text + "%') OR freetext ([EDate],'%" + TextBox2.Text + "%') OR freetext ([Current_Status],'%" + TextBox2.Text + "%') OR freetext ([Remarks],'%" + TextBox2.Text + "%') ";
+                string query = "SELECT Distinct [Id], [EYear], [Log_Year], [Department], [EGroup], [ELogGroupStudent], [Doctor_Name], [Training_Site] , [PatientID] ,[Activity_Type], [Core_Diag_Sess], [Type_Desc] , [Participation_Type], [EDate] , [Current_Status], [Remarks] FROM [ELogBook].[dbo].[Final_Record] where freetext ([EYear],'%" + TextBox2.Text + "%') OR freetext ([Log_Year],'%" + TextBox2.Text + "%') OR freetext ([Department],'%" + TextBox2.Text + "%') OR freetext ([EGroup],'%" + TextBox2.Text + "%') OR freetext ([ELogGroupStudent],'%" + TextBox2.Text + "%') OR freetext ([Doctor_Name],'%" + TextBox2.Text + "%') OR freetext ([Training_Site],'%" + TextBox2.Text + "%') OR freetext ([Participation_Type],'%" + TextBox2.Text + "%') OR freetext ([Activity_Type],'%" + TextBox2.Text + "%') OR freetext ([Core_Diag_Sess],'%" + TextBox2.Text + "%') OR freetext ([Type_Desc],'%" + TextBox2.Text + "%') OR freetext ([EDate],'%" + TextBox2.Text + "%') OR freetext ([Current_Status],'%" + TextBox2.Text + "%') OR freetext ([Remarks],'%" + TextBox2.Text + "%')";
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    using (SqlDataAdapter sda = new SqlDataAdapter())
+                    {
+                        cmd.Connection = con;
+                        sda.SelectCommand = cmd;
+                        using (DataTable dt = new DataTable())
+                        {
+                            sda.Fill(dt);
+                            GridView1.DataSource = dt;
+                            GridView1.Visible = true;
+                            GridView1.DataBind();
 
+                        }
+                    }
+                }
+            }
+        }
+
+        //text search
         protected void TextBox2_TextChanged(object sender, EventArgs e)
         {
             this.text_Search();
 
         }
 
+
+        //dropdownload click
+        protected void Unnamed1_Click(object sender, EventArgs e)
+        {
+            DropdownListDataFilter();
+        }
+
+
+
+        //for export
         protected void Button2_Click(object sender, EventArgs e)
         {/*
             //update
@@ -301,6 +343,12 @@ namespace elog.Staff
                 Response.Flush();
                 Response.End();
             }
+        }
+
+        protected void MyBtn_Download(object sender, EventArgs e)
+        {
+            // export to pdf new button
+            Rectangle rect = new Rectangle(500, 300);
         }
     }
 }

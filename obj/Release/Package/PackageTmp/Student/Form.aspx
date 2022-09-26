@@ -323,7 +323,8 @@
                 return false;
             }
         }
-        $.ready.document(){
+        $.ready.document()
+        {
 
         }
     </script>

@@ -29,24 +29,26 @@ namespace elog
         {
             //login
 
-            if (TextBox1.Text == "")
-            {
-                Response.Write("<script>alert('please type the Username')</script>");
-            }
+                
+                if (TextBox1.Text == "")
+                {
+                    Response.Write("<script>alert('please type the Username')</script>");
+                }
 
-            else if (TextBox2.Text == "")
-            {
-                Response.Write("<script>alert('please type the password')</script>");
-            }
-
+                else if (TextBox2.Text == "")
+                {
+                    Response.Write("<script>alert('please type the password')</script>");
+                }
+                
 
 
             else
             {
 
                 SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["Elogconnection"].ConnectionString);
-                string str = " select * from login_user ";
                 con.Open();
+              
+                string str = " select * from login_user ";
                 SqlCommand cmd = new SqlCommand(str, con);
                 SqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())

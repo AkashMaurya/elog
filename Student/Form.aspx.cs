@@ -24,7 +24,7 @@ namespace elog.Student
 
                 Calendar1.Visible = false;
                 //string Eyear = "2021-22";
-               
+
 
 
                 Label4.Text = Session["username"].ToString();
@@ -34,7 +34,8 @@ namespace elog.Student
                 SqlCommand cmd = new SqlCommand(str, con);
                 SqlDataReader sdr = cmd.ExecuteReader();
                 sdr.Read();
-                Label1.Text = sdr["EYear"].ToString();
+                // Label1.Text = sdr["EYear"].ToString();
+                Label1.Text = "2022-23";
                 Label2.Text = sdr["Log_Year"].ToString();
                 Label3.Text = sdr["EGroup"].ToString();
                 Label4.Text = sdr["ELogGroupStudent"].ToString();
@@ -42,7 +43,7 @@ namespace elog.Student
                 sdr.Close();
                 con.Close();
 
-              
+
 
             }
         }
@@ -66,17 +67,13 @@ namespace elog.Student
                 //Save Record
                 SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["Elogconnection"].ConnectionString);
                 DateTime date = DateTime.Now.Date;
-                String query = "insert into Final_Record values ('"+Label1.Text+ "', '" + Label2.Text + "', '" + DropDownList2.Text + "', '" + Label3.Text + "', '" + Label4.Text + "','" + DropDownList5.Text + "', '" + DropDownList6.Text + "', '" + TextBox1.Text + "','" + DropDownList7.Text + "', '" + DropDownList8.Text + "','" + TextBox2.Text + "','" + DropDownList9.Text + "','" + TextBox3.Text + "','Approval Required','No Remarks')";
-               
-                
+                String query = "insert into Final_Record values ('" + Label1.Text + "', '" + Label2.Text + "', '" + DropDownList2.Text + "', '" + Label3.Text + "', '" + Label4.Text + "','" + DropDownList5.Text + "', '" + DropDownList6.Text + "' , '" + TextBox1.Text + "' , '" + DropDownList7.Text + "' , '" + DropDownList8.Text + "' , '" + TextBox2.Text + "' , '" + DropDownList9.Text + "' , '" + TextBox3.Text + "' , 'Approval Required' , 'No Remarks' )";
                 con.Open();
-                SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = query;
-                cmd.Connection = con;
-                cmd.ExecuteNonQuery();
-                //Response.Redirect("ActivateEmail.aspx?emailadd=" + TextBox3.Text);
+                SqlCommand cmd = new SqlCommand(query,con);
+           
+                cmd.ExecuteNonQuery();               
                 con.Close();
-                Response.Write("<script>alert('Thank You For Using ElogBook , Your Data is Saved Successfully')</script>");
+                Response.Write("<script> alert('Thank You For Using ElogBook , Your Data is Saved Successfully')</script>");
                 TextBox1.Text = "";
                 TextBox2.Text = "";
                 TextBox3.Text = "";

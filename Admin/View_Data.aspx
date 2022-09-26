@@ -67,7 +67,7 @@
                                 <asp:BoundField DataField="EGroup" HeaderText="EGroup" SortExpression="EGroup" />
                                 <asp:BoundField DataField="ELogGroupStudent" HeaderText="ELogGroupStudent" SortExpression="ELogGroupStudent" />
                                 <asp:BoundField DataField="Doctor_Name" HeaderText="Doctor_Name" SortExpression="Doctor_Name" />
-                                <asp:BoundField DataField="Hospital_Name" HeaderText="Hospital_Name" SortExpression="Hospital_Name" />
+                                <asp:BoundField DataField="Training_Site" HeaderText="Hospital_Name" SortExpression="Hospital_Name" />
                                 <asp:BoundField DataField="PatientID" HeaderText="PatientID" SortExpression="PatientID" />
                                 <asp:BoundField DataField="Participation_Type" HeaderText="Participation_Type" SortExpression="Participation_Type" />
                                 <asp:BoundField DataField="Activity_Type" HeaderText="Activity_Type" SortExpression="Activity_Type" />

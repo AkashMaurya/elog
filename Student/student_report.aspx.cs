@@ -201,14 +201,13 @@ namespace elog.Student
         protected void GridView2_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             Label Id = GridView2.Rows[e.RowIndex].FindControl("Label1") as Label;
-            String updatedata = "delete from Final_Record where Id ='" + Id.Text + "'";
-
+            String updatedata = "DELETE from Final_Record where Id ='" + Id.Text.ToString() + "'";
             con.Open();
             SqlCommand cmd = new SqlCommand();
             cmd.CommandText = updatedata;
             cmd.Connection = con;
             cmd.ExecuteNonQuery();
-            Label1.Text = "Row Data Has Been Deleted Successfully";
+            Label6.Text = "Selected Report Has Been Deleted Successfully";
             GridView2.EditIndex = -1;
             SqlDataSource4.DataBind();
             GridView2.DataSource = SqlDataSource4;

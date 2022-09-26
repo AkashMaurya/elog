@@ -4,8 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-        <ContentTemplate>
+   
 
 
 
@@ -153,8 +152,9 @@
                                 <asp:Parameter Name="Username" Type="Double" />
                                 <asp:Parameter Name="Password" Type="String" />
                                 <asp:Parameter Name="Id" Type="Int32" />
+                                </UpdateParameters>
                         </asp:SqlDataSource>
-                        </UpdateParameters>
+                        
                     
                                
                     </div>
@@ -206,6 +206,5 @@
                 </div>
             </div>
 
-        </ContentTemplate>
-    </asp:UpdatePanel>
+     
 </asp:Content>

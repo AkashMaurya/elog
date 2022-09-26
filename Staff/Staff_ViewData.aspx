@@ -26,11 +26,35 @@
 
                 <asp:Button ID="Button1" runat="server" Text="Search" class="btn btn-primary" UseSubmitBehavior="false" OnClick="Button1_Click" />
                 &nbsp; &nbsp;
+                <asp:Button ID="MyBtn" runat="server" Text ="My New Download" CssClass="btn btn-success" UseSubmitBehavior="false" OnClick="MyBtn_Download" />
+                   &nbsp; &nbsp;
                 <asp:Button ID="ExportInExcel" runat="server" Text="Export Excel" CssClass="btn btn-warning" UseSubmitBehavior="false" OnClick="exportexcel" />
                 &nbsp; &nbsp;
                         <asp:Button ID="Button2" runat="server" Text="Download Data" class="btn btn-primary " UseSubmitBehavior="false" OnClick="Button2_Click" />
 
             </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-md-10 text-center">
+                <asp:DropDownList ID="DropDownList1" runat="server" class="custom-select d-block w-100 form-control">
+                    <asp:ListItem>Select the Department</asp:ListItem>
+                    <asp:ListItem>Internal Medicine</asp:ListItem>
+                    <asp:ListItem>OBGYN</asp:ListItem>
+                    <asp:ListItem>Pediatrics</asp:ListItem>
+                    <asp:ListItem>ENT</asp:ListItem>
+                    <asp:ListItem>Surgery</asp:ListItem>
+                    <asp:ListItem>Family Medicine</asp:ListItem>
+                    <asp:ListItem>Ophthalmology</asp:ListItem>
+                    <asp:ListItem>Psychiatry</asp:ListItem>
+                </asp:DropDownList>
+
+                <br />
+                <br />
+            </div>
+            <div class="col-md-2 text-center">
+                <asp:Button Text="Search" runat="server" class="btn btn-primary" OnClick="Unnamed1_Click"/>
+             </div>
+
         </div>
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
@@ -60,6 +84,7 @@
                                 <EditRowStyle BackColor="#999999" />
                                 <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
                                 <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                                <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
                                 <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
                                 <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
                                 <SelectedRowStyle BackColor="#E2DED6" ForeColor="#333333" Font-Bold="True" />
