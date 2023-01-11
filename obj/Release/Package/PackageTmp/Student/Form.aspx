@@ -6,17 +6,17 @@
 
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
-    <div class="container-fluid mt-5" style="margin:40px">
-        
-        <img src="~/image/agu.png" alt="" runat="server" class="rounded mx-auto d-block img-fluid logo mt-4" style="width:10rem">
+    <div class="container-fluid mt-5" style="margin: 40px">
+
+        <img src="~/image/agu.png" alt="" runat="server" class="rounded mx-auto d-block img-fluid logo mt-4" style="width: 10rem">
         <div style="padding-top: 2rem;">
         </div>
-    
+
 
         <div class="row mt-2">
             <div class="col-md-4">
                 <img src="../image/form.jpg" alt="Responsive image" id="pic"
-                    class=" rounded mx-auto d-block img-fluid img-thumbnail max-width:100% height:h-auto" style="width:30rem">
+                    class=" rounded mx-auto d-block img-fluid img-thumbnail max-width:100% height:h-auto" style="width: 30rem">
             </div>
 
 
@@ -36,7 +36,7 @@
 
 
 
-                             <div class="row py-3">
+                            <div class="row py-3">
                                 <div class="col-md-4 mt-2">
                                     <label for="state">Select Date</label>
                                 </div>
@@ -89,11 +89,11 @@
                                     <!-- Log Year -->
                                     <asp:Label ID="Label2" runat="server" Text=""></asp:Label>
 
-                                    
+
 
                                 </div>
                             </div>
-                          
+
 
                             <!-- Q5 -->
                             <div class="row py-3">
@@ -103,7 +103,7 @@
 
                                 <div class="col-md-6">
 
-                                    
+
                                     <asp:Label ID="Label3" runat="server" Text=""></asp:Label>
 
                                 </div>
@@ -120,7 +120,7 @@
 
                                 </div>
                             </div>
-                              <!-- Q4 -->
+                            <!-- Q4 -->
                             <div class="row py-3">
                                 <div class="col-md-4 mt-2">
                                     <label for="state">Select Your Department</label>
@@ -173,6 +173,7 @@
                                     <asp:DropDownList ID="DropDownList6" runat="server" class="custom-select d-block w-100 form-control">
                                         <asp:ListItem>SMC</asp:ListItem>
                                         <asp:ListItem>KHUH</asp:ListItem>
+                                        <asp:ListItem>MKCC</asp:ListItem>
                                         <asp:ListItem>Health Center</asp:ListItem>
                                         <asp:ListItem>Psychiatry Hospital</asp:ListItem>
                                         <asp:ListItem>AGU</asp:ListItem>
@@ -213,7 +214,7 @@
                                         <option>Skills &amp; Procedure</option>
                                     </select> -->
 
-                                    <asp:DropDownList ID="DropDownList7" runat="server" class="custom-select d-block w-100 form-control" AutoPostBack="True"  DataTextField="Activity_type" DataValueField="Activity_type" DataSourceID="SqlDataSource3">
+                                    <asp:DropDownList ID="DropDownList7" runat="server" class="custom-select d-block w-100 form-control" AutoPostBack="True" DataTextField="Activity_type" DataValueField="Activity_type" DataSourceID="SqlDataSource3">
                                     </asp:DropDownList>
                                     <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:Elogconnection %>" SelectCommand="SELECT DISTINCT [Activity_type] FROM [Department_Activity] WHERE (([Eyear] = @Eyear) AND ([LogYear] = @LogYear) AND ([Department] = @Department))">
                                         <SelectParameters>
@@ -235,7 +236,7 @@
 
                                 <div class="col-md-6">
 
-                                    <asp:DropDownList ID="DropDownList8" runat="server" class="custom-select d-block w-100 form-control" AutoPostBack="True"  DataTextField="Core_diagnosis_prod_session" DataValueField="Core_diagnosis_prod_session" DataSourceID="SqlDataSource4"></asp:DropDownList>
+                                    <asp:DropDownList ID="DropDownList8" runat="server" class="custom-select d-block w-100 form-control" AutoPostBack="True" DataTextField="Core_diagnosis_prod_session" DataValueField="Core_diagnosis_prod_session" DataSourceID="SqlDataSource4"></asp:DropDownList>
 
                                     <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:Elogconnection %>" SelectCommand="SELECT DISTINCT [Core_diagnosis_prod_session] FROM [Department_Activity] WHERE (([Eyear] = @Eyear) AND ([LogYear] = @LogYear) AND ([Department] = @Department) AND ([Activity_type] = @Activity_type))">
                                         <SelectParameters>
@@ -283,17 +284,17 @@
 
                                 </div>
                             </div>
-                             
+
                             <!-- Q12 -->
-                           
-                            </ContentTemplate>
+
+                        </ContentTemplate>
                     </asp:UpdatePanel>
 
 
 
 
 
-                       
+
                     <!-- Q13 -->
                     <div class="row ">
                         <div class="col-md-12  text-center">

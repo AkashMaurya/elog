@@ -217,7 +217,7 @@
                     <br />
 
                     <div class="text-center">
-                        <asp:Button ID="Button2" runat="server" Text="Show Detail" CssClass="btn btn-success btn-lg" UseSubmitBehavior="false" OnClick="Button2_Click" />
+                        <asp:Button ID="Button2" runat="server" Text="Show Detail" CssClass="btn btn-success btn-lg" UseSubmitBehavior="false" OnClick="Button2_Click" style="height: 27px" />
                         &nbsp;
             <asp:Button ID="Button1" runat="server" Text="Download in PDF" CssClass="btn btn-primary btn-lg" UseSubmitBehavior="false" OnClick="Button1_Click" />
                         &nbsp; 
