@@ -25,6 +25,13 @@ namespace elog.Student
                 Calendar1.Visible = false;
                 //string Eyear = "2021-22";
 
+                DateTime today = DateTime.Today;
+                DateTime minDate = today.AddDays(-7);
+
+                Calendar1.TodaysDate = today;
+                Calendar1.SelectedDate = today;
+                Calendar1.VisibleDate = today;
+                
 
 
                 Label4.Text = Session["username"].ToString();
@@ -95,10 +102,17 @@ namespace elog.Student
 
         protected void Calendar1_DayRender(object sender, DayRenderEventArgs e)
         {
-            if (e.Day.Date > DateTime.Today)
+            DateTime minDate = DateTime.Today.AddDays(-10);
+            
+            if(e.Day.Date <minDate || e.Day.Date>DateTime.Today)
             {
                 e.Day.IsSelectable = false;
+                e.Cell.BackColor = System.Drawing.Color.Gray;
             }
+           /* if (e.Day.Date > DateTime.Today)
+            {
+                e.Day.IsSelectable = false;
+            }*/
         }
     }
 }
