@@ -12,8 +12,6 @@
                     <div class="carousel-item active">
                         <img src="image/Agu_wall.jpg" class="d-block w-100" alt="...">
                     </div>
-
-
                 </div>
             </div>
         </div>

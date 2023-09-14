@@ -19,14 +19,15 @@ namespace elog.Student
 
         protected void Page_Load(object sender, EventArgs e)
         {
-          
-            if (!IsPostBack)
+
+            /*if (!IsPostBack)
             {
 
-                Label4.Text = Session["username"].ToString();
+                TextBox6.Text = Session["username"].ToString();
+                TextBox2.Text = Session["year"].ToString();
                 //ShowDetail();
                 con.Open();
-                string str = "SELECT * FROM ELogGroupStudent where Username = '" + Session["username"].ToString() + "'";
+                string str = "SELECT * FROM ELogGroupStudent where Username = '" + Session["username"].ToString() + "' and EYear='" + Session["year"].ToString() + "'";
                 SqlCommand cmd = new SqlCommand(str, con);
                 SqlDataReader sdr = cmd.ExecuteReader();
                 sdr.Read();
@@ -45,13 +46,75 @@ namespace elog.Student
 
                 GridView1.Visible = true;
 
+            } */
+
+            if (!IsPostBack)
+            {
+                if (Session["username"] != null && Session["year"] != null)
+                {
+                    try
+                    {
+                        string username = Session["username"].ToString();
+                        string year = Session["year"].ToString();
+
+                        con.Open();
+                        string query = "SELECT * FROM ELogGroupStudent WHERE Username = @Username AND EYear = @EYear";
+                        SqlCommand cmd = new SqlCommand(query, con);
+                        cmd.Parameters.AddWithValue("@Username", username);
+                        cmd.Parameters.AddWithValue("@EYear", year);
+
+                        SqlDataReader sdr = cmd.ExecuteReader();
+
+                        if (sdr.Read())
+                        {
+                            lblID.Text = sdr["Id"].ToString();
+                            TextBox2.Text = sdr["EYear"].ToString();
+                            TextBox3.Text = sdr["Log_Year"].ToString();
+                            TextBox4.Text = sdr["EGroup"].ToString();
+                            TextBox5.Text = sdr["ELogGroupStudent"].ToString();
+                            TextBox6.Text = sdr["Username"].ToString();
+                            TextBox7.Text = sdr["Password"].ToString();
+
+                            showGrid();
+                            GridView1.Visible = true;
+                        }
+                        else
+                        {
+                            // Handle the case where the data was not found
+                            // You can display an error message or take other appropriate action.
+                            // For example:
+                            // lblMessage.Text = "Data not found.";
+                        }
+
+                        sdr.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        // Handle any exceptions that may occur (e.g., database connection error)
+                        // For example:
+                        // lblMessage.Text = "An error occurred: " + ex.Message;
+                    }
+                    finally
+                    {
+                        con.Close();
+                    }
+                }
+                else
+                {
+                    // Handle the case where Session variables are not set
+                    // You can redirect to a login page or take other appropriate action.
+                    // For example:
+                    // Response.Redirect("Login.aspx");
+                }
+            
             }
+ 
         }
 
 
 
-        private void showGrid()
-        {
+            private void showGrid()
+            {
             string query = "Select [Id],[EYear] ,[Log_Year] ,[EGroup],[ELogGroupStudent] ,[Username],[Password] from ELogGroupStudent where EYear = '" + Label1.Text + "' AND Log_Year ='" + Label2.Text + "' AND EGroup = '" + Label3.Text + "' AND ELogGroupStudent = '" + Label4.Text + "'  ";
 
 

@@ -26,9 +26,10 @@ namespace elog.Student
             if (IsPostBack)
             {
                 BindGrid();
-                Label4.Text = Session["username"].ToString();               
+                Label4.Text = Session["username"].ToString();
+                Label1.Text = Session["year"].ToString();
                 con.Open();
-                string str = "SELECT * FROM ELogGroupStudent where Username = '" + Session["username"].ToString() + "'";
+                string str = "SELECT * FROM ELogGroupStudent where Username = '" + Session["username"].ToString() + "' and EYear='" + Session["year"].ToString() + "' ";
                 SqlCommand cmd = new SqlCommand(str, con);
                 SqlDataReader sdr = cmd.ExecuteReader();
                 sdr.Read();

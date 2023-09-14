@@ -22,11 +22,11 @@ namespace elog.Student
             if (IsPostBack)
             {
 
-                Calendar1.Visible = false;
+                Calendar1.Visible = true;
                 //string Eyear = "2021-22";
 
                 DateTime today = DateTime.Today;
-                DateTime minDate = today.AddDays(-7);
+                DateTime minDate = today.AddDays(-10);
 
                 Calendar1.TodaysDate = today;
                 Calendar1.SelectedDate = today;
@@ -35,14 +35,15 @@ namespace elog.Student
 
 
                 Label4.Text = Session["username"].ToString();
+                Label1.Text = Session["year"].ToString();
                 //ShowDetail();
                 con.Open();
-                string str = "SELECT * FROM ELogGroupStudent where Username = '" + Session["username"].ToString() + "'";
+                string str = "SELECT * FROM ELogGroupStudent where Username = '" + Session["username"].ToString() + "' and EYear='" + Session["year"].ToString() + "'";
                 SqlCommand cmd = new SqlCommand(str, con);
                 SqlDataReader sdr = cmd.ExecuteReader();
                 sdr.Read();
                 // Label1.Text = sdr["EYear"].ToString();
-                Label1.Text = "2022-23";
+                Label1.Text = sdr["EYear"].ToString();
                 Label2.Text = sdr["Log_Year"].ToString();
                 Label3.Text = sdr["EGroup"].ToString();
                 Label4.Text = sdr["ELogGroupStudent"].ToString();
@@ -109,10 +110,12 @@ namespace elog.Student
                 e.Day.IsSelectable = false;
                 e.Cell.BackColor = System.Drawing.Color.Gray;
             }
-           /* if (e.Day.Date > DateTime.Today)
-            {
-                e.Day.IsSelectable = false;
-            }*/
+          
+        }
+
+        private void DisplaySelectedData()
+        {
+            
         }
     }
 }

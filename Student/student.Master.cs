@@ -24,7 +24,7 @@ namespace elog.Student
 
             if (!Page.IsPostBack)
             {
-                if (Session["username"] == null)
+                if (Session["username"] == null && Session["year"]==null)
                 {
                     Session.Abandon();
                     Session.Clear();
@@ -38,7 +38,7 @@ namespace elog.Student
                 {
                     //Session["username"].ToString();
                     con.Open();
-                    string str = "SELECT * FROM ELogGroupStudent where Username = '" + Session["username"].ToString() + "'";
+                    string str = "SELECT * FROM ELogGroupStudent where Username = '" + Session["username"].ToString() + "' and EYear='"+Session["year"].ToString()+"'";
                     SqlCommand cmd = new SqlCommand(str, con);
                     SqlDataReader sdr = cmd.ExecuteReader();
                     sdr.Read();

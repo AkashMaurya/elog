@@ -27,9 +27,9 @@ namespace elog
             }
 
         }
-        
+
         private void stu_login()
-        { 
+        {
             if (TextBox1.Text == "")
             {
                 Response.Write("<script>alert('please type the Username')</script>");
@@ -44,15 +44,17 @@ namespace elog
             {
 
                 SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["Elogconnection"].ConnectionString);
-                string str = " select * from ELogGroupStudent ";
+                string str = "select* from ELogGroupStudent ";
                 con.Open();
                 SqlCommand cmd = new SqlCommand(str, con);
                 SqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    if (TextBox1.Text == dr["Username"].ToString() && TextBox2.Text == dr["Password"].ToString())
+                    if (TextBox1.Text == dr["Username"].ToString() && TextBox2.Text == dr["Password"].ToString() && DropDownList1.Text == dr["EYear"].ToString())
                     {
                         Session["username"] = TextBox1.Text;
+                        Session["year"] = DropDownList1.Text;
+
                         Response.Redirect("~/Student/student_front_page.aspx");
 
                     }
@@ -67,15 +69,19 @@ namespace elog
                 dr.Close();
 
                 con.Close();
+
+
+
+
                 TextBox1.Text = "";
                 TextBox2.Text = "";
 
             }
-            
-           // stu_login();
+
+            // stu_login();
 
         }
-        
+
         protected void Button1_Click(object sender, EventArgs e)
         {
 
