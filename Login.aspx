@@ -22,9 +22,9 @@
             </div>
             <div class="col-md-12 ">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
+                    <label for="exampleInputEmail1">Login Username</label>
                    
-                    <asp:TextBox ID="TextBox1" runat="server" class="form-control" placeholder="Enter Username"></asp:TextBox>
+                    <asp:TextBox ID="TextBox1" runat="server" class="form-control" placeholder="Enter Tutor Username"></asp:TextBox>
 
                     <small id="emailHelp" class="form-text text-muted">We'll never share your useranme with anyone else.</small>
                 </div>
@@ -45,8 +45,10 @@
 
 
         <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-            <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
+                    <asp:DropDownList ID="DropDownList1" runat="server" class="form-control">
+                        <asp:ListItem>2023-24</asp:ListItem>
+                    </asp:DropDownList>
+            <asp:Label Text="text" runat="server" ID="Label1" />
           <!--  <label class="form-check-label" for="exampleCheck1">
                 Check me out</label> -->
         </div>

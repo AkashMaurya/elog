@@ -20,6 +20,7 @@ namespace elog
             {
                 TextBox1.Text = "";
                 TextBox2.Text = "";
+
                 con.Close();
 
             }

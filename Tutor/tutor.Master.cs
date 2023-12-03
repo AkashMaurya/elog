@@ -41,13 +41,15 @@ namespace elog.Tutor
                     sdr.Read();
                     Label1.Text = sdr["Username"].ToString();
                     Label3.Text = sdr["Doctor_Name"].ToString();
-                    Label2.Text = sdr["Department"].ToString(); 
-                    
+                    Label2.Text = sdr["Department"].ToString();
+                    EYear.Text = sdr["EYear"].ToString();
+
                     sdr.Close();
                     con.Close();
                 }
                 con.Close();
             }
+        
         }
 
         protected void Button1_Click(object sender, EventArgs e)

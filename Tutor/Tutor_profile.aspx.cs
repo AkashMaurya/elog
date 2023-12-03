@@ -21,16 +21,17 @@ namespace elog.Tutor
         {
             if (!IsPostBack)
             {
+                Label5.Text = Session["Username"].ToString();
+                EYear.Text= Session["EYear"].ToString();
 
-               
                 //ShowDetail();
                 con.Open();
-                string str = "SELECT * FROM Doctor where Username = '" + Session["username"].ToString() + "'";
+                string str = "SELECT * FROM Doctor where Username = '" + Session["Username"].ToString() + "'  AND '" + Session["EYear"].ToString() + "'";
                 SqlCommand cmd = new SqlCommand(str, con);
                 SqlDataReader sdr = cmd.ExecuteReader();
                 sdr.Read();
                 lblID.Text = sdr["Id"].ToString();
-                Label1.Text = sdr["EYear"].ToString();
+                EYear.Text = sdr["EYear"].ToString();
                 Label2.Text = sdr["Log_Year"].ToString();
                 Label3.Text = sdr["Department"].ToString();
                 Label4.Text = sdr["Doctor_Name"].ToString();

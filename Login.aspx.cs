@@ -45,15 +45,16 @@ namespace elog
             {
 
                 SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["Elogconnection"].ConnectionString);
-                string str = " select * from Doctor ";
+                string str = "select * from Doctor";
                 con.Open();
                 SqlCommand cmd = new SqlCommand(str, con);
                 SqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    if (TextBox1.Text == dr["Username"].ToString() && TextBox2.Text == dr["Password"].ToString())
+                    if (TextBox1.Text == dr["Username"].ToString() && TextBox2.Text == dr["Password"].ToString() && DropDownList1.Text == dr["EYear"].ToString() )
                     {
                         Session["Username"] = TextBox1.Text;
+                        Session["EYear"] = DropDownList1.Text;
                         Response.Redirect("~/Tutor/DocterPage.aspx");
                     }
                     else

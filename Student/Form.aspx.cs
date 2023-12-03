@@ -26,7 +26,7 @@ namespace elog.Student
                 //string Eyear = "2021-22";
 
                 DateTime today = DateTime.Today;
-                DateTime minDate = today.AddDays(-10);
+                DateTime minDate = today.AddDays(-60);
 
                 Calendar1.TodaysDate = today;
                 Calendar1.SelectedDate = today;
@@ -103,7 +103,7 @@ namespace elog.Student
 
         protected void Calendar1_DayRender(object sender, DayRenderEventArgs e)
         {
-            DateTime minDate = DateTime.Today.AddDays(-10);
+            DateTime minDate = DateTime.Today.AddDays(-60);
             
             if(e.Day.Date <minDate || e.Day.Date>DateTime.Today)
             {

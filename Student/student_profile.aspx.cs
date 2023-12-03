@@ -19,35 +19,6 @@ namespace elog.Student
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            /*if (!IsPostBack)
-            {
-
-                TextBox6.Text = Session["username"].ToString();
-                TextBox2.Text = Session["year"].ToString();
-                //ShowDetail();
-                con.Open();
-                string str = "SELECT * FROM ELogGroupStudent where Username = '" + Session["username"].ToString() + "' and EYear='" + Session["year"].ToString() + "'";
-                SqlCommand cmd = new SqlCommand(str, con);
-                SqlDataReader sdr = cmd.ExecuteReader();
-                sdr.Read();
-                lblID.Text = sdr["Id"].ToString();
-                TextBox2.Text = sdr["EYear"].ToString();
-                TextBox3.Text = sdr["Log_Year"].ToString();
-                TextBox4.Text = sdr["EGroup"].ToString();
-                TextBox5.Text = sdr["ELogGroupStudent"].ToString();
-                TextBox6.Text = sdr["Username"].ToString();
-                TextBox7.Text = sdr["Password"].ToString();
-
-
-                sdr.Close();
-                con.Close();
-                showGrid();
-
-                GridView1.Visible = true;
-
-            } */
-
             if (!IsPostBack)
             {
                 if (Session["username"] != null && Session["year"] != null)

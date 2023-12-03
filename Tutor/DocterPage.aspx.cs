@@ -15,30 +15,65 @@ namespace elog.Tutor
     {
         string connectionString = ConfigurationManager.ConnectionStrings["Elogconnection"].ConnectionString;
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["Elogconnection"].ConnectionString);
+
+
+
+        // correction of code
         protected void Page_Load(object sender, EventArgs e)
         {
-            //for showing Tutor Profile Data
+
             if (IsPostBack)
             {
-                Label4.Text = Session["username"].ToString();
-
+                Label4.Text = Session["Username"].ToString();
+                EYear.Text = Session["EYear"].ToString();
                 //ShowDetail();
 
                 con.Open();
-                string str = "SELECT * FROM Doctor where Username = '" + Session["username"].ToString() + "'";
+                string str = "SELECT * FROM Doctor where Username = '" + Session["Username"].ToString() + "' And  EYear ='" + Session["EYear"].ToString() + "'";
                 SqlCommand cmd = new SqlCommand(str, con);
                 SqlDataReader sdr = cmd.ExecuteReader();
                 sdr.Read();
                 Label4.Text = sdr["Username"].ToString();
                 Label2.Text = sdr["Doctor_Name"].ToString();
                 Label3.Text = sdr["Department"].ToString();
+                EYear.Text = sdr["EYear"].ToString();
 
                 sdr.Close();
                 con.Close();
 
             }
+        
+
 
         }
+
+        //ShowDetail();
+        /*
+        con.Open();
+        string str = "SELECT * FROM Doctor WHERE Username = '" + Session["Username"].ToString() + "' AND EYear = " + Session["EYear"].ToString();
+
+        SqlCommand cmd = new SqlCommand(str, con);
+        SqlDataReader sdr = cmd.ExecuteReader();
+        sdr.Read();
+        Label4.Text = sdr["Username"].ToString();
+        Label2.Text = sdr["Doctor_Name"].ToString();
+        Label3.Text = sdr["Department"].ToString();
+        EYear.Text = sdr["EYear"].ToString();
+
+        sdr.Close();
+        con.Close(); */
+
+
+
+
+
+
+
+
+
+        //! Correct only above code
+
+        /*----------------------------------------*/
 
         protected void Button1_Click(object sender, EventArgs e)
         {
@@ -47,13 +82,11 @@ namespace elog.Tutor
         }
 
 
-
-
         // a function for show not approved data in gridview
         private void BindGrid()
         {
             con.Open();
-            using (SqlCommand cmd = new SqlCommand("SELECT * FROM Final_Record where Department = '" + Label3.Text + "'  And  Doctor_Name ='" + Label2.Text + "' And Current_Status = 'Approval Required '"))
+            using (SqlCommand cmd = new SqlCommand("SELECT * FROM Final_Record where Department = '" + Label3.Text + "'  And  Doctor_Name = '" + Label2.Text + "' And  EYear ='"+EYear.Text.ToString()+"' And Current_Status = 'Approval Required '"))
             {
                 using (SqlDataAdapter sda = new SqlDataAdapter())
                 {
@@ -91,12 +124,12 @@ namespace elog.Tutor
 
                     if (status.Checked)
                     {
-                        updaterow(Id, "Approved",textBox1.Text);
+                        updaterow(Id, "Approved", textBox1.Text);
                     }
 
                     else if (status1.Checked)
                     {
-                        updaterow(Id, "Rejected" ,textBox1.Text);
+                        updaterow(Id, "Rejected", textBox1.Text);
                     }
                     /*
                     else if (textBox1.Text != "")
