@@ -61,6 +61,7 @@ namespace elog.Student
                     }
                     catch (Exception ex)
                     {
+                        Console.WriteLine(ex.ToString());
                         // Handle any exceptions that may occur (e.g., database connection error)
                         // For example:
                         // lblMessage.Text = "An error occurred: " + ex.Message;

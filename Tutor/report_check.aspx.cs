@@ -45,7 +45,7 @@ namespace elog.Tutor
                 }
                 catch (Exception ex)
                 {
-
+                   
                 }
                 finally
                 {
